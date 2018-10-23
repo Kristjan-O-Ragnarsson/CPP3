@@ -1,35 +1,10 @@
 #include <iostream>
 #include <string>
+#include "FlightBooking.h"
 
 using namespace std;
 
-class FlightBooking {
-public:
-	FlightBooking(int id, int capacity, int reserved);
-	//~FlightBooking();
-	void printStatus();
-private:
-	int getFillLevel();
-	int id;
-	int capacity;
-	int reserved;
-};
-void FlightBooking::printStatus()
-{
-	cout << "Flight " << id << " :" << reserved << "/" << capacity << "("<< getFillLevel() << "%)";
-}
 
-int FlightBooking::getFillLevel(){
-	return 100 * reserved / capacity;
-
-}
-
-FlightBooking::FlightBooking(int id, int capacity, int reserved)
-{
-	this->id = id;
-	this->capacity = capacity;
-	this->reserved = reserved;
-}
 
 /*
 FlightBooking::~FlightBooking(){
@@ -37,6 +12,7 @@ FlightBooking::~FlightBooking(){
 }
 */
 int main() {
+    string input;
 	int reserved = 0,
 		capacity = 0;
 	cout << "Provide flight capacity: ";
@@ -45,11 +21,14 @@ int main() {
 	cin >> reserved;
 	FlightBooking booking(1, capacity, reserved);
 	booking.printStatus();
-	while (true)
+	/*while (true)
 	{
-		//cin
+		cin >> input;
+        if (1){
+            break;
+        }
 		// some function for prasing
-	}
+	}*/
 	return 0;
 }
 
