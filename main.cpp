@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <map>
 #include "FlightBooking.h"
 
 using namespace std;
@@ -12,7 +13,8 @@ FlightBooking::~FlightBooking(){
 */
 int main() {
     string input;
-    int n;
+    int n, id;
+    /*
 	int reserved = 0,
 		capacity = 0;
 	cout << "Provide flight capacity: ";
@@ -21,16 +23,29 @@ int main() {
 	cin >> reserved;
 	FlightBooking booking(1, capacity, reserved);
 	booking.printStatus();
+     */
 	while (true){
-		cin >> input >> n;
-		if (input == "add"){
-			if (booking.addPassengers(n)){
+		cin >> input >> id >> n;
+		if (input == "create"){
+			if (flightPool.count(id)){
 				cout << "added " << n << " passengers" << endl;
 			} else{
 				cout << "Cannot perform this operation" << endl;
 			}
+		}else if (input == "delete") {
+			if (flightPool.count(id)){
+				cout << "canceld " << n << " passengers" << endl;
+			} else{
+				cout << "Cannot perform this operation" << endl;
+			}
+		}else if (input == "add") {
+			if (flightPool[id].removePassengers(n)){
+				cout << "canceld " << n << " passengers" << endl;
+			} else{
+				cout << "Cannot perform this operation" << endl;
+			}
 		}else if (input == "cancel") {
-			if (booking.removePassengers(n)){
+			if (flightPool[id].removePassengers(n)){
 				cout << "canceld " << n << " passengers" << endl;
 			} else{
 				cout << "Cannot perform this operation" << endl;
@@ -42,7 +57,6 @@ int main() {
 		}
 		input = "";
 		n = 0;
-		booking.printStatus();
 	}
 
 	return 0;
