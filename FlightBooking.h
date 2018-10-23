@@ -10,6 +10,8 @@ public:
     FlightBooking(int id, int capacity, int reserved);
     //~FlightBooking();
     void printStatus();
+    bool addPassengers(int n);
+    bool removePassengers(int n);
 private:
     int getFillLevel();
     int id_m;
