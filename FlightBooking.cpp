@@ -15,7 +15,12 @@ FlightBooking::FlightBooking(int id, int capacity, int reserved)
 
 void FlightBooking::printStatus()
 {
-    cout << "Flight " << id_m << " :" << reserved_m << "/" << capacity_m << "("<< getFillLevel() << "%)"<< endl;
+    if(id_m > 0){
+        cout << "Flight " << id_m << " :" << reserved_m << "/" << capacity_m << "("<< getFillLevel() << "%)"<< endl;
+    } else {
+        cout << "Flight not found" << endl;
+    }
+
 }
 
 int FlightBooking::getFillLevel(){
