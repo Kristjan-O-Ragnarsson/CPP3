@@ -7,6 +7,7 @@
 
 class FlightBooking {
 public:
+    FlightBooking();
     FlightBooking(int id, int capacity, int reserved);
     //~FlightBooking();
     void printStatus();

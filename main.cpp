@@ -2,6 +2,7 @@
 #include <string>
 #include <map>
 #include "FlightBooking.h"
+//#include "FlightPool.h"
 
 using namespace std;
 
@@ -14,6 +15,9 @@ FlightBooking::~FlightBooking(){
 int main() {
     string input;
     int n, id;
+    std::map<int, int> flightPool;
+    //FlightPool flightPool;
+    FlightBooking fbooking[10];
     /*
 	int reserved = 0,
 		capacity = 0;
@@ -23,7 +27,7 @@ int main() {
 	cin >> reserved;
 	FlightBooking booking(1, capacity, reserved);
 	booking.printStatus();
-     */
+*/
 	while (true){
 		cin >> input >> id >> n;
 		if (input == "create"){
@@ -39,13 +43,13 @@ int main() {
 				cout << "Cannot perform this operation" << endl;
 			}
 		}else if (input == "add") {
-			if (flightPool[id].removePassengers(n)){
-				cout << "canceld " << n << " passengers" << endl;
+			if (fbooking[id].addPassengers(n)){
+				cout << "reserved " << n << " seats" << endl;
 			} else{
 				cout << "Cannot perform this operation" << endl;
 			}
 		}else if (input == "cancel") {
-			if (flightPool[id].removePassengers(n)){
+			if (fbooking[id].removePassengers(n)){
 				cout << "canceld " << n << " passengers" << endl;
 			} else{
 				cout << "Cannot perform this operation" << endl;
@@ -55,6 +59,7 @@ int main() {
 		} else {
 			cout << input << " is not a command" << endl;
 		}
+
 		input = "";
 		n = 0;
 	}

@@ -5,15 +5,17 @@
 #ifndef CPP3_FLIGHTPOOL_H
 #define CPP3_FLIGHTPOOL_H
 
+#include "FlightBooking.h"
+/*
 class FlightPool {
 private:
-    int *arr_m;
+    FlightBooking *arr_m;
     int size_m;
 public:
     FlightPool();
     ~FlightPool();
-    //getFlightPointer();
-    //add
+    FlightBooking getFlightPointer(int id);
+    //FlightBooking addFlight();
 };
-
+*/
 #endif //CPP3_FLIGHTPOOL_H

@@ -6,6 +6,12 @@
 
 using namespace std;
 
+FlightBooking::FlightBooking(){
+    id_m = 0;
+    capacity_m = 0;
+    reserved_m = 0;
+}
+
 FlightBooking::FlightBooking(int id, int capacity, int reserved)
 {
     id_m = id;
