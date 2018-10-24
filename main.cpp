@@ -15,9 +15,11 @@ FlightBooking::~FlightBooking(){
 int main() {
     string input;
     int n, id;
+    int counter = 0;
     std::map<int, int> flightPool;
     //FlightPool flightPool;
     FlightBooking fbooking[10];
+    cout << "lol" << endl;
     /*
 	int reserved = 0,
 		capacity = 0;
@@ -31,8 +33,10 @@ int main() {
 	while (true){
 		cin >> input >> id >> n;
 		if (input == "create"){
-			if (flightPool.count(id)){
-				cout << "added " << n << " passengers" << endl;
+			if (!(flightPool.count(id))){
+			    flightPool.insert(std::pair<int, int>(id,counter));
+			    fbooking[counter] = FlightBooking(id, n, 0);
+                fbooking[counter++].printStatus();
 			} else{
 				cout << "Cannot perform this operation" << endl;
 			}
