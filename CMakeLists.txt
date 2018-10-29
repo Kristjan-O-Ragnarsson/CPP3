@@ -3,4 +3,5 @@ project(CPP3)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(CPP3 main.cpp FlightBooking.cpp FlightBooking.h FlightArray.h FlightArray.cpp)
+add_executable(CPP3 main.cpp FlightBooking.cpp FlightBooking.h FlightPool.cpp FlightPool.h FlightArray.h FlightArray.cpp)
+
