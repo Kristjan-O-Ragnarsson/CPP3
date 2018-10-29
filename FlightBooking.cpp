@@ -50,4 +50,8 @@ bool FlightBooking::removePassengers(int n) {
 
 }
 
+int FlightBooking::getId() {
+    return id_m;
+}
+
 

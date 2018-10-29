@@ -2,7 +2,7 @@
 #include <string>
 #include <sstream>
 #include "FlightBooking.h"
-#include "FlightPool.h"
+#include "FlightArray.h"
 
 using namespace std;
 
@@ -16,10 +16,10 @@ int main() {
     string command;
     string input;
     int n, id;
-    FlightPool fPool;
+    FlightArray fArr;
     //FlightPool flightPool;
     cout << "lol" << endl;
-    /*
+/*
 	int reserved = 0,
 		capacity = 0;
 	cout << "Provide flight capacity: ";
@@ -35,28 +35,28 @@ int main() {
 	    ss << input;
 		ss >> command >> id >> n;
 		if (command == "create"){
-			if (!(fPool.checkIfFlightExist(id))){
-			    if(!(fPool.createFlight(id, n))){
+			if (!(fArr.checkIfFlightExist(id))){
+			    if(!(fArr.createFlight(id, n))){
                     cout << "Cannot perform this operation" << endl;
 			    }
 			} else{
 				cout << "Cannot perform this operation" << endl;
 			}
 		}else if (command == "delete") {
-			if (fPool.checkIfFlightExist(id)){
-				fPool.deletFlight(id);
+			if (fArr.deletFlight(id)){
+				cout << "removed flight " << id << endl;
 			} else{
 				cout << "Cannot perform this operation" << endl;
 			}
 		}else if (command == "add") {
-			if (fPool.addPassengers(id, n)){
+			if (fArr.addPassengers(id, n)){
 				cout << "reserved " << n << " seats" << endl;
 			} else{
 				cout << "Cannot perform this operation" << endl;
 			}
 		}
 		else if (command == "cancel") {
-			if (fPool.removePassengers(id, n)){
+			if (fArr.removePassengers(id, n)){
 				cout << "canceld " << n << " passengers" << endl;
 			} else{
 				cout << "Cannot perform this operation" << endl;
@@ -64,8 +64,10 @@ int main() {
 		}else if (command == "quit") {
 			break;
 		} else if(command == "show") {
-		    fPool.printStatus(id);
-		} else {
+		    fArr.printStatus(id);
+		} else if(command == "info") {
+            fArr.getInfo();
+        } else {
 			cout << command << " is not a command" << endl;
 		}
 	}

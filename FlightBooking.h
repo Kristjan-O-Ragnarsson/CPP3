@@ -13,6 +13,7 @@ public:
     void printStatus();
     bool addPassengers(int n);
     bool removePassengers(int n);
+    int getId();
 private:
     int getFillLevel();
     int id_m;
