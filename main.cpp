@@ -65,6 +65,8 @@ int main() {
 			break;
 		} else if(command == "show") {
 		    fArr.printStatus(id);
+		} else if (command == "showall") {
+			fArr.printAll();
 		} else if(command == "info") {
 		    cout << "command is only for dynamic array";
             fArr.getInfo();
