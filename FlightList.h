@@ -19,6 +19,7 @@ public:
    bool removePassengers(int id,int n);
    void printStatus(int id);
    void getInfo();
+   void printAll();
 };
 
 #endif //CPP3_FLIGHTLIST_H

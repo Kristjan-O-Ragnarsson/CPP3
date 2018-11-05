@@ -93,6 +93,15 @@ void FlightList::printStatus(int id) {
     current->data.printStatus();
 }
 
+void FlightList::printAll() {
+    FlightNode *current = head;
+    while (current){
+        current->data.printStatus();
+        current = current->next;
+    }
+
+}
+
 void FlightList::getInfo() {
     return;
 }
