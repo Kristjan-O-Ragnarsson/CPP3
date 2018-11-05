@@ -2,7 +2,7 @@
 #include <string>
 #include <sstream>
 #include "FlightBooking.h"
-#include "FlightArray.h"
+#include "FlightList.h"
 
 using namespace std;
 
@@ -16,7 +16,7 @@ int main() {
     string command;
     string input;
     int n, id;
-    FlightArray fArr;
+    FlightList fArr;
     //FlightPool flightPool;
     cout << "lol" << endl;
 /*
@@ -66,6 +66,7 @@ int main() {
 		} else if(command == "show") {
 		    fArr.printStatus(id);
 		} else if(command == "info") {
+		    cout << "command is only for dynamic array";
             fArr.getInfo();
         } else {
 			cout << command << " is not a command" << endl;
