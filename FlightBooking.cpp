@@ -2,6 +2,7 @@
 // Created by Lenovo on 23.10.2018.
 //
 #include <iostream>
+#include <sstream>
 #include "FlightBooking.h"
 
 using namespace std;
@@ -13,13 +14,15 @@ FlightBooking::FlightBooking(int id, int capacity, int reserved)
     reserved_m = reserved;
 }
 
-void FlightBooking::printStatus()
+string FlightBooking::printStatus()
 {
+    ostringstream os;
     if(id_m > 0){
-        cout << "Flight " << id_m << " :" << reserved_m << "/" << capacity_m << "("<< getFillLevel() << "%)"<< endl;
+        os << "Flight " << id_m << " :" << reserved_m << "/" << capacity_m << "("<< getFillLevel() << "%)"<< endl;
     } else {
-        cout << "Flight not found" << endl;
+        os << "Flight not found" << endl;
     }
+    return os.str();
 
 }
 
@@ -54,4 +57,15 @@ int FlightBooking::getId() {
     return id_m;
 }
 
+bool operator>(const FlightBooking& fFlight, const FlightBooking& sFlight) {
+    return fFlight.reserved_m > sFlight.reserved_m;
+}
 
+
+bool operator==(const FlightBooking& fFlight, const FlightBooking& sFlight){
+    return fFlight.reserved_m == sFlight.reserved_m;
+}
+
+ostream& operator<<(ostream &ostr, FlightBooking fligh){
+    return ostr << fligh.printStatus();
+}

@@ -29,6 +29,12 @@ int main() {
 	FlightBooking booking(1, capacity, reserved);
 	booking.printStatus();
 */
+    FlightBooking one(1,1,1);
+    FlightBooking two(2,2,2);
+    FlightBooking onne(1,1,1);
+
+	//if(one < two) cout << "True";
+
 	while (true){
 	    getline(cin, input);
 	    stringstream ss;

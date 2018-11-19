@@ -6,17 +6,12 @@
 #define CPP3_FLIGHTPOOL_H
 
 #include "FlightBooking.h"
-#include <map>
+#include "FlightArray.h"
 
 class FlightPool {
 private:
-    FlightBooking arr[10];
-    bool empty[10] = {true, true, true, true, true, true, true, true, true, true};
-    std::map<int, int> flightPool;
-    int inUse = 0;
-    int size;
-    int arrId;
-    int getId();
+    FlightArray fArr;
+    FlightBooking tmp;
 public:
     FlightPool();
     ~FlightPool();
