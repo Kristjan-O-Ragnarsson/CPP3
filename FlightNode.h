@@ -12,5 +12,6 @@ public:
     FlightBooking data;
     FlightNode *next;
     FlightNode(int id, int cap);
+    FlightNode(int id, int cap, int res);
 };
 #endif //CPP3_FLIGHTNODE_H

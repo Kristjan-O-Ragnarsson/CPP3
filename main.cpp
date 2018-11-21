@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
 #include "FlightBooking.h"
 #include "FlightList.h"
 
@@ -29,9 +30,9 @@ int main() {
 	FlightBooking booking(1, capacity, reserved);
 	booking.printStatus();
 */
-    FlightBooking one(1,1,1);
-    FlightBooking two(2,2,2);
-    FlightBooking onne(1,1,1);
+    //FlightBooking one(1,1,1);
+    //FlightBooking two(2,2,2);
+    //FlightBooking onne(1,1,1);
 
 	//if(one < two) cout << "True";
 
@@ -76,11 +77,21 @@ int main() {
 		} else if(command == "info") {
 		    cout << "command is only for dynamic array";
             fArr.getInfo();
-        } else {
+        } else if(command == "save") {
+			fArr.saveAll();
+		} else if(command == "load") {
+		    fstream data("flights.bin", std::fstream::in | std::fstream::out | std::fstream::binary);
+		    FlightBooking tmp;
+            data.seekg(0);
+            while (data.read((char*)&tmp, sizeof(FlightBooking))){
+                fArr.createFlight(tmp.getId(), tmp.getRes(), tmp.getCap());
+            }
+		} else {
 			cout << command << " is not a command" << endl;
 		}
 	}
-
+    cout << "Exiting Press enter...";
+    cin.ignore();
 	return 0;
 }
 

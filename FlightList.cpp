@@ -23,11 +23,38 @@ bool FlightList::createFlight(int id, int n) {
     if(checkIfFlightExist(id)) return false;
     if(head == nullptr) {
         head = new FlightNode(id, n);
-        head->data.printStatus();
+        std::cout << head->data;
         return true;
     } else {
         FlightNode *newNode = new FlightNode(id, n);
-        newNode->data.printStatus();
+        std::cout << newNode->data;
+        if(head->data.getId() > id) {
+            newNode->next = head;
+            head = newNode;
+            return true;
+        } else {
+            FlightNode *current = head;
+            FlightNode *prev = head;
+            while (current && current->data.getId() < id) {
+                prev = current;
+                current = current->next;
+            }
+            prev->next = newNode;
+            newNode->next = current;
+            return true;
+        }
+    }
+}
+
+bool FlightList::createFlight(int id, int n, int cap) {
+    if(checkIfFlightExist(id)) return false;
+    if(head == nullptr) {
+        head = new FlightNode(id, n, cap);
+        std::cout << head->data;
+        return true;
+    } else {
+        FlightNode *newNode = new FlightNode(id, n, cap);
+        std::cout << newNode->data;
         if(head->data.getId() > id) {
             newNode->next = head;
             head = newNode;
@@ -90,13 +117,13 @@ void FlightList::printStatus(int id) {
     while (current->data.getId() != id){
         current = current->next;
     }
-    current->data.printStatus();
+    std::cout << current->data;
 }
 
 void FlightList::printAll() {
     FlightNode *current = head;
     while (current){
-        current->data.printStatus();
+        std::cout << current->data;
         current = current->next;
     }
 
@@ -104,4 +131,30 @@ void FlightList::printAll() {
 
 void FlightList::getInfo() {
     return;
+}
+
+void FlightList::saveAll() {
+    std::fstream data("flights.bin", std::fstream::in | std::fstream::out | std::fstream::binary | std::fstream::trunc);
+    FlightBooking fl[2];
+    FlightBooking tmp_;
+    int tel = 0;
+    if(!data.is_open()) "Error!\n";
+    else{
+        FlightNode *tmp = head;
+        while (tmp){
+            data.write((char*)&tmp->data, sizeof(FlightBooking));
+            tmp=tmp->next;
+        }
+        data.seekg(0);
+        /*
+        while (data.read((char*)&tmp_, sizeof(FlightBooking))){
+            fl[tel++] = tmp_;
+        }
+        for(int j = 0; j < 2; j++){
+            std::cout << fl[j];
+        }
+         */
+        data.close();
+    }
+
 }

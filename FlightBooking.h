@@ -16,6 +16,8 @@ public:
     bool addPassengers(int n);
     bool removePassengers(int n);
     int getId();
+    int getCap();
+    int getRes();
     friend bool operator> (const FlightBooking& fFlight, const FlightBooking& sFlight);
     friend bool operator< (const FlightBooking& fFlight, const FlightBooking& sFlight) { return sFlight > fFlight;};
     friend bool operator==(const FlightBooking& fFlight, const FlightBooking& sFlight);

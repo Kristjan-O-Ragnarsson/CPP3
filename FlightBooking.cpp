@@ -27,8 +27,11 @@ string FlightBooking::printStatus()
 }
 
 int FlightBooking::getFillLevel(){
-    return 100 * reserved_m / capacity_m;
-
+    if (capacity_m == 0){
+        return 0;
+    } else{
+        return 100 * reserved_m / capacity_m;
+    }
 }
 
 bool FlightBooking::addPassengers(int n) {
@@ -55,6 +58,14 @@ bool FlightBooking::removePassengers(int n) {
 
 int FlightBooking::getId() {
     return id_m;
+}
+
+int FlightBooking::getCap() {
+    return capacity_m;
+}
+
+int FlightBooking::getRes() {
+    return  reserved_m;
 }
 
 bool operator>(const FlightBooking& fFlight, const FlightBooking& sFlight) {
